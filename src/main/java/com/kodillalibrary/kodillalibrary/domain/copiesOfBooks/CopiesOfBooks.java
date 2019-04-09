@@ -1,0 +1,78 @@
+package com.kodillalibrary.kodillalibrary.domain.copiesOfBooks;
+
+import com.kodillalibrary.kodillalibrary.domain.rentBooks.RentBooks;
+import com.kodillalibrary.kodillalibrary.domain.title.Title;
+import com.kodillalibrary.kodillalibrary.repository.TitleDao;
+import com.kodillalibrary.kodillalibrary.service.DbServiceTitle;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "COPIES_OF_BOOKS")
+public class CopiesOfBooks {
+    private int id;
+    private String status;
+    private Title title;
+    private List<RentBooks> rentBooksList = new ArrayList<>();
+
+    public CopiesOfBooks(String status) {
+        this.status = status;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @NotNull
+    @Column(name = "ID", unique = true)
+    public int getId() {
+        return id;
+    }
+
+    @Column(name = "STATUS")
+    public String getStatus() {
+        return status;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "TITLE_ID")
+    public Title getTitle() {
+        return title;
+    }
+
+    public void setTitle(Title title) {
+        this.title = title;
+    }
+
+    @OneToMany(
+            targetEntity = RentBooks.class,
+            mappedBy = "copiesOfBooks",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+
+
+    public List<RentBooks> getRentBooksList() {
+        return rentBooksList;
+    }
+
+    public void setRentBooksList(List<RentBooks> rentBooksList) {
+        this.rentBooksList = rentBooksList;
+    }
+}

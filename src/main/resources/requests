@@ -1,0 +1,50 @@
+Request for postman:
+
+1. Create reader:
+    http://localhost:8080/api/library/createReader
+
+    body:
+            {
+                "name": "Piotr",
+                "surname": "Szczepanski"
+            }
+
+2. Get all readers:
+    http://localhost:8080/api/library/getReaders
+
+3. get reader by Id:
+    http://localhost:8080/api/library/getReaderById?readerId=19
+
+4. get reader by name and surname:
+    http://localhost:8080/api/library/getReader?name=Piotr&&surname=Szczepanski
+
+5. delete reader by Id:
+    http://localhost:8080/api/library/deleteReaderById?readerId=16
+
+6. delete reader by name and surname:
+    http://localhost:8080/api/library/deleteReaderByNameAndSurname?name=Piotr&&surname=Szczepanski
+
+7. Create book title:
+    http://localhost:8080/api/library/createBookTitle
+    body example:
+    {
+        "title": "Tytuł_1",
+        "author": "Author_1",
+        "yearOfPublishment": "2005"
+    }
+
+8. Get all book titles:
+    http://localhost:8080/api/library/getTitles
+
+9. Get book by title ID:
+    http://localhost:8080/api/library/getTitleById?titleId=16
+
+10. Delete book by title book:
+    http://localhost:8080/api/library/deleteBookByTitle?title=Tytuł_2
+
+11. Delete book by Id Book:
+    http://localhost:8080/api/library/deleteBookById?titleId=18
+
+12. Update book:
+    http://localhost:8080/api/library/updateBook
+
