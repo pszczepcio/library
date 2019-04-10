@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 public class ReaderDto {
-    private Integer id;
+    private long id;
     private String name;
     private String surname;
     private Date dateOfAccountCreation;

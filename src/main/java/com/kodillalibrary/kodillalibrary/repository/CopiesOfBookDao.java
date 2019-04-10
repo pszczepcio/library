@@ -6,20 +6,21 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @Repository
-public interface CopiesOfBookDao extends CrudRepository<CopiesOfBooks, Integer> {
+public interface CopiesOfBookDao extends CrudRepository<CopiesOfBooks, Long> {
     @Override
     List<CopiesOfBooks> findAll();
 
     @Override
-    CopiesOfBooks save(CopiesOfBooks title);
+    CopiesOfBooks save(CopiesOfBooks copiesOfBooks);
 
-    CopiesOfBooks findById(Integer id);
+    Optional<CopiesOfBooks> findById(Long id);
 
     @Override
-    void delete(Integer id);
+    void delete(Long id);
 
     @Override
     void delete(CopiesOfBooks copiesOfBooks);

@@ -2,6 +2,7 @@ package com.kodillalibrary.kodillalibrary.mappers;
 
 import com.kodillalibrary.kodillalibrary.domain.title.Title;
 import com.kodillalibrary.kodillalibrary.domain.title.TitleDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -10,6 +11,10 @@ import java.util.stream.Collectors;
 
 @Component
 public class TitleMapper {
+
+    @Autowired
+    private CopyMapper copyMapper;
+
     public Title mapToTitle(final TitleDto titleDto){
         return new Title(
                 titleDto.getTitle(),

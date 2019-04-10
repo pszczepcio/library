@@ -20,7 +20,7 @@ public class DbServiceTitle {
         return titleDao.findAll();
     }
 
-    public Title getBookById(Integer id){
+    public Title getBookById(Long id){
         return titleDao.findById(id);
     }
 
@@ -28,7 +28,7 @@ public class DbServiceTitle {
         titleDao.deleteByTitle(title);
     }
 
-    public void deleteBookById(Integer id){
+    public void deleteBookById(Long id){
         titleDao.delete(id);
     }
 }

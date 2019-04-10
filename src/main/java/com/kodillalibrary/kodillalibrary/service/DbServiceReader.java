@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DbServiceReader {
@@ -20,11 +21,11 @@ public class DbServiceReader {
         return readerDao.findAll();
     }
 
-    public Reader getReader(Integer readerId){
-        return readerDao.findOne(readerId);
+    public Optional<Reader> getReader(Long readerId){
+        return readerDao.findById(readerId);
     }
 
-    public Reader findReaderByNameAndSurname(String name, String surname){
+    public Optional<Reader> findReaderByNameAndSurname(String name, String surname){
        return readerDao.findByNameAndSurname(name, surname);
     }
 
@@ -32,7 +33,7 @@ public class DbServiceReader {
         readerDao.deleteByNameAndSurname(name, surname);
     }
 
-    public void deleteReaderById(Integer readerId){
+    public void deleteReaderById(Long readerId){
         readerDao.delete(readerId);
     }
 }

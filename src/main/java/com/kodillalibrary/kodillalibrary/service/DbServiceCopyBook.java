@@ -6,13 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DbServiceCopyBook {
     @Autowired
     private CopiesOfBookDao copiesOfBookDao;
+    @Autowired
+    private DbServiceTitle serviceTitle;
 
-    public CopiesOfBooks createCopies(final CopiesOfBooks copiesOfBooks){
+    public CopiesOfBooks save(final CopiesOfBooks copiesOfBooks){
+        copiesOfBooks.setTitle(serviceTitle.getBookById(copiesOfBooks.getTitle().getId()));
+        return copiesOfBookDao.save(copiesOfBooks);
+    }
+    public CopiesOfBooks createCopies(final CopiesOfBooks copiesOfBooks, final Long titleId){
+        copiesOfBooks.setTitle(serviceTitle.getBookById(titleId));
         return copiesOfBookDao.save(copiesOfBooks);
     }
 
@@ -20,11 +28,11 @@ public class DbServiceCopyBook {
         return copiesOfBookDao.findAll();
     }
 
-    public CopiesOfBooks getCopyById(final Integer id){
+    public Optional<CopiesOfBooks> getCopyById(final Long id){
         return copiesOfBookDao.findById(id);
     }
 
-    public void deleteById(Integer id){
+    public void deleteById(Long id){
         copiesOfBookDao.delete(id);
     }
 }

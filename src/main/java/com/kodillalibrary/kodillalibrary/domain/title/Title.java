@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 @Table(name = "TITLES")
 public class Title {
-    private int id;
+    private long id;
     private String title;
     private String author;
     private int yearOfPublishment;
@@ -29,7 +29,7 @@ public class Title {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID", unique = true)
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -48,7 +48,7 @@ public class Title {
         return yearOfPublishment;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

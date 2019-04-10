@@ -15,12 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "COPIES_OF_BOOKS")
 public class CopiesOfBooks {
-    private int id;
+    private long id;
     private String status;
     private Title title;
     private List<RentBooks> rentBooksList = new ArrayList<>();
@@ -33,7 +33,7 @@ public class CopiesOfBooks {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     @Column(name = "ID", unique = true)
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -42,7 +42,7 @@ public class CopiesOfBooks {
         return status;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

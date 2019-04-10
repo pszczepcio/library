@@ -1,6 +1,7 @@
 package com.kodillalibrary.kodillalibrary.domain.title;
 
 import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooks;
+import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooksDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 public class TitleDto {
-    private int id;
+    private long id;
     private String title;
     private String author;
     private int yearOfPublishment;

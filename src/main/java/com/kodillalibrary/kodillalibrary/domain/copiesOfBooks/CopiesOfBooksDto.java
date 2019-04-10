@@ -16,7 +16,13 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 public class CopiesOfBooksDto {
-    private int id;
+    private long id;
     private String status;
-    private TitleDto titleDto;
+    private long titleId;
+    private List<RentBooks> rentBooksList = new ArrayList<>();
+
+    public CopiesOfBooksDto(String status, Integer titleId) {
+        this.status = status;
+        this.titleId = titleId;
+    }
 }

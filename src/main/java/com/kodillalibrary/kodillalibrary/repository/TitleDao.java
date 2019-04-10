@@ -9,17 +9,17 @@ import java.util.List;
 
 @Repository
 @Transactional
-public interface TitleDao extends CrudRepository<Title, Integer> {
+public interface TitleDao extends CrudRepository<Title, Long> {
     @Override
     List<Title> findAll();
 
     @Override
     Title save(Title title);
 
-    Title findById(Integer id);
+    Title findById(Long id);
 
     @Override
-    void delete(Integer id);
+    void delete(Long id);
 
     @Override
     void deleteAll();

@@ -13,20 +13,19 @@ import java.util.Optional;
 //
 @Repository
 @Transactional
-public interface ReaderDao extends CrudRepository<Reader, Integer> {
+public interface ReaderDao extends CrudRepository<Reader, Long> {
     @Override
     List<Reader> findAll();
 
     @Override
     Reader save (Reader reader);
 
-    @Override
-    Reader findOne(Integer id);
+    Optional<Reader> findById(Long id);
 
     @Override
-    void delete(Integer integer);
+    void delete(Long id);
 
-    Reader findByNameAndSurname(String name, String surname);
+    Optional<Reader> findByNameAndSurname(String name, String surname);
 
     void deleteByNameAndSurname(String name, String surname);
 }
