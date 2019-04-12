@@ -1,0 +1,29 @@
+REQUEST FOR COPIES OF BOOK:
+
+1. Create copy book:
+    http://localhost:8080/api/library/createCopy
+
+    Body:
+    {
+        	"status": "availabe",
+        	"titleId": "6"
+    }
+
+2. Get all copies of books:
+    http://localhost:8080/api/library/getCopies
+
+3. Get copy by title id:
+    http://localhost:8080/api/library/getCopyById?copyId=11
+
+4. Delete copy book by copy id:
+    http://localhost:8080/api/library/deleteById?copyId=11
+
+ 5. Up date copy:
+    http://localhost:8080/api/library/updateCopy
+
+    Body:
+    {
+        "id": "12",
+    	"status": "not available",
+    	"titleId": "5"
+    }

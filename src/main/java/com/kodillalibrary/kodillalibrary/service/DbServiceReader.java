@@ -1,7 +1,7 @@
 package com.kodillalibrary.kodillalibrary.service;
 
 import com.kodillalibrary.kodillalibrary.domain.reader.Reader;
-import com.kodillalibrary.kodillalibrary.repository.ReaderDao;
+import com.kodillalibrary.kodillalibrary.ReaderDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

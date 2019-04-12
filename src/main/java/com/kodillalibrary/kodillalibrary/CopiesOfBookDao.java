@@ -1,4 +1,4 @@
-package com.kodillalibrary.kodillalibrary.repository;
+package com.kodillalibrary.kodillalibrary;
 
 import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooks;
 import org.springframework.data.repository.CrudRepository;
@@ -22,9 +22,4 @@ public interface CopiesOfBookDao extends CrudRepository<CopiesOfBooks, Long> {
     @Override
     void delete(Long id);
 
-    @Override
-    void delete(CopiesOfBooks copiesOfBooks);
-
-    @Override
-    void deleteAll();
 }

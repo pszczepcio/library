@@ -1,7 +1,7 @@
 package com.kodillalibrary.kodillalibrary.service;
 
 import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooks;
-import com.kodillalibrary.kodillalibrary.repository.CopiesOfBookDao;
+import com.kodillalibrary.kodillalibrary.CopiesOfBookDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +17,6 @@ public class DbServiceCopyBook {
 
     public CopiesOfBooks save(final CopiesOfBooks copiesOfBooks){
         copiesOfBooks.setTitle(serviceTitle.getBookById(copiesOfBooks.getTitle().getId()));
-        return copiesOfBookDao.save(copiesOfBooks);
-    }
-    public CopiesOfBooks createCopies(final CopiesOfBooks copiesOfBooks, final Long titleId){
-        copiesOfBooks.setTitle(serviceTitle.getBookById(titleId));
         return copiesOfBookDao.save(copiesOfBooks);
     }
 

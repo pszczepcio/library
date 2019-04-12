@@ -14,6 +14,7 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping("/api/library")
 public class ReaderController {
+
     @Autowired
     private DbServiceReader service;
 
@@ -48,5 +49,10 @@ public class ReaderController {
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteReaderById")
     public void deleteReaderById(@RequestParam Long readerId){
         service.deleteReaderById(readerId);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "updateReader")
+    public ReaderDto updateReader(@RequestBody ReaderDto readerDto){
+        return readerMapper.mapToReaderDto(service.saveReaders(readerMapper.mapToReader(readerDto)));
     }
 }

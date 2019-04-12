@@ -1,16 +1,13 @@
-package com.kodillalibrary.kodillalibrary.repository;
+package com.kodillalibrary.kodillalibrary;
 
 import com.kodillalibrary.kodillalibrary.domain.reader.Reader;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-//
 @Repository
 @Transactional
 public interface ReaderDao extends CrudRepository<Reader, Long> {

@@ -1,0 +1,33 @@
+REQUEST FOR RENT BOOKS:
+
+1. Create rent book:
+    http://localhost:8080/api/library/createRentBook
+
+    body:
+
+    {
+        "copiesOfBooksId": "3",
+    	"readerId": "2"
+    }
+
+2. Get all rent books:
+    http://localhost:8080/api/library/getRentBooks
+
+3. Get rent book by rent book id:
+    http://localhost:8080/api/library/getRentBookById?rentBookId=2
+
+4. Update rent book:
+    http://localhost:8080/api/library/updateRentBook
+
+    body:
+
+    {
+        "id": 1,
+        "copiesOfBooksId": 3,
+        "readerId": 2,
+        "dateOfRent": "2019-04-12 10:21:16",
+        "dateOfReturn": "2020-05-11 10:21:16"
+    }
+
+5. Delete rent book by rent book id:
+    http://localhost:8080/api/library/deleteRentBookById?rentBookId=1

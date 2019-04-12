@@ -1,0 +1,25 @@
+REQUEST FOR TITLE:
+
+1. Create book title:
+    http://localhost:8080/api/library/createBookTitle
+    body example:
+    {
+        "title": "Tytuł_1",
+        "author": "Author_1",
+        "yearOfPublishment": "2005"
+    }
+
+2. Get all book titles:
+    http://localhost:8080/api/library/getTitles
+
+3. Get book by title ID:
+    http://localhost:8080/api/library/getTitleById?titleId=16
+
+4. Delete book by title book:
+    http://localhost:8080/api/library/deleteBookByTitle?title=Tytuł_2
+
+5. Delete book by Id Book:
+    http://localhost:8080/api/library/deleteBookById?titleId=18
+
+6. Update book:
+    http://localhost:8080/api/library/updateBook

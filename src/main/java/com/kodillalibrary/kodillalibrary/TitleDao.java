@@ -1,4 +1,4 @@
-package com.kodillalibrary.kodillalibrary.repository;
+package com.kodillalibrary.kodillalibrary;
 
 import com.kodillalibrary.kodillalibrary.domain.title.Title;
 import org.springframework.data.repository.CrudRepository;
@@ -25,6 +25,4 @@ public interface TitleDao extends CrudRepository<Title, Long> {
     void deleteAll();
 
     void deleteByTitle(String title);
-
-
 }

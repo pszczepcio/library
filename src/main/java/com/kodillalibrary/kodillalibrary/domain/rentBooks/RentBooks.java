@@ -2,25 +2,28 @@ package com.kodillalibrary.kodillalibrary.domain.rentBooks;
 
 import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooks;
 import com.kodillalibrary.kodillalibrary.domain.reader.Reader;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Calendar;
 import java.util.Date;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "RENT_BOOKS")
 public class RentBooks {
-    private int id;
+    private long id;
     private Date dateOfRent;
     private Date dateOfReturn;
     private CopiesOfBooks copiesOfBooks;
     private Reader reader;
     private final static int NEXTMONTH = 30;
 
-    public RentBooks(int idCopiesOfBooks, int idReader){
+    public RentBooks(CopiesOfBooks copiesOfBooks, Reader reader){
+        this.copiesOfBooks = copiesOfBooks;
+        this.reader = reader;
         this.dateOfRent = new Date();
         Calendar returnBook = Calendar.getInstance();
         returnBook.setTime((Date) dateOfRent.clone());
@@ -32,7 +35,7 @@ public class RentBooks {
     @GeneratedValue
     @NotNull
     @Column(name = "ID", unique = true)
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -58,7 +61,7 @@ public class RentBooks {
         this.copiesOfBooks = copiesOfBooks;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -79,4 +82,5 @@ public class RentBooks {
     public void setReader(Reader reader) {
         this.reader = reader;
     }
+
 }

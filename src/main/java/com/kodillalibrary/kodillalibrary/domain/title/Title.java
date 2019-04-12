@@ -1,12 +1,9 @@
 package com.kodillalibrary.kodillalibrary.domain.title;
 
-//import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooks;
-import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooks;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
+import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooks;
+import lombok.NoArgsConstructor;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,7 +61,7 @@ public class Title {
         this.yearOfPublishment = yearOfPublishment;
     }
 
-        @OneToMany(
+    @OneToMany(
             targetEntity = CopiesOfBooks.class,
             mappedBy = "title",
             cascade = CascadeType.ALL,

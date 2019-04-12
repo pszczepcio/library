@@ -1,20 +1,23 @@
 package com.kodillalibrary.kodillalibrary.domain.rentBooks;
 
-import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooks;
-import com.kodillalibrary.kodillalibrary.domain.reader.Reader;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 public class RentBooksDto {
-    private int id;
-    private Date dateOfRent;
-    private Date dateOfReturn;
-    private CopiesOfBooks copiesOfBooks;
-    private Reader reader;
+    private long id;
+    private long copiesOfBooksId;
+    private long readerId;
+    private String dateOfRent;
+    private String dateOfReturn;
+
+    public RentBooksDto(long copiesOfBooksId, long readerId) {
+        this.copiesOfBooksId = copiesOfBooksId;
+        this.readerId = readerId;
+    }
 }

@@ -2,20 +2,12 @@ package com.kodillalibrary.kodillalibrary.domain.copiesOfBooks;
 
 import com.kodillalibrary.kodillalibrary.domain.rentBooks.RentBooks;
 import com.kodillalibrary.kodillalibrary.domain.title.Title;
-import com.kodillalibrary.kodillalibrary.repository.TitleDao;
-import com.kodillalibrary.kodillalibrary.service.DbServiceTitle;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-//@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "COPIES_OF_BOOKS")
@@ -66,8 +58,6 @@ public class CopiesOfBooks {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-
-
     public List<RentBooks> getRentBooksList() {
         return rentBooksList;
     }

@@ -1,7 +1,7 @@
 package com.kodillalibrary.kodillalibrary.service;
 
 import com.kodillalibrary.kodillalibrary.domain.title.Title;
-import com.kodillalibrary.kodillalibrary.repository.TitleDao;
+import com.kodillalibrary.kodillalibrary.TitleDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

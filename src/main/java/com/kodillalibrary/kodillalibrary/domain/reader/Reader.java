@@ -1,9 +1,7 @@
 package com.kodillalibrary.kodillalibrary.domain.reader;
 
 import com.kodillalibrary.kodillalibrary.domain.rentBooks.RentBooks;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
