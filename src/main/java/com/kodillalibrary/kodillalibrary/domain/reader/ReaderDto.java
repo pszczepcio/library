@@ -1,6 +1,6 @@
 package com.kodillalibrary.kodillalibrary.domain.reader;
 
-import com.kodillalibrary.kodillalibrary.domain.rentBooks.RentBooksDto;
+import com.kodillalibrary.kodillalibrary.domain.booksRental.RentalBooksDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +16,7 @@ public class ReaderDto {
     private String name;
     private String surname;
     private String dateOfAccountCreation;
-    private List<RentBooksDto> rentBooksDtoList;
+    private List<RentalBooksDto> rentalBooksDtoList;
 
     public ReaderDto(long id, String name, String surname, String date){
         this.id = id;

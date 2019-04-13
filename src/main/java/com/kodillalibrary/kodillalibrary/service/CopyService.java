@@ -1,7 +1,7 @@
 package com.kodillalibrary.kodillalibrary.service;
 
 import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooks;
-import com.kodillalibrary.kodillalibrary.CopiesOfBookDao;
+import com.kodillalibrary.kodillalibrary.repository.copy.dao.CopyDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,26 +9,26 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DbServiceCopyBook {
+public class CopyService {
     @Autowired
-    private CopiesOfBookDao copiesOfBookDao;
+    private CopyDao copyDao;
     @Autowired
-    private DbServiceTitle serviceTitle;
+    private TitleService serviceTitle;
 
     public CopiesOfBooks save(final CopiesOfBooks copiesOfBooks){
         copiesOfBooks.setTitle(serviceTitle.getBookById(copiesOfBooks.getTitle().getId()));
-        return copiesOfBookDao.save(copiesOfBooks);
+        return copyDao.save(copiesOfBooks);
     }
 
     public List<CopiesOfBooks> getAllCopies(){
-        return copiesOfBookDao.findAll();
+        return copyDao.findAll();
     }
 
     public Optional<CopiesOfBooks> getCopyById(final Long id){
-        return copiesOfBookDao.findById(id);
+        return copyDao.findById(id);
     }
 
     public void deleteById(Long id){
-        copiesOfBookDao.delete(id);
+        copyDao.delete(id);
     }
 }

@@ -3,7 +3,7 @@ package com.kodillalibrary.kodillalibrary.controller;
 import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooksDto;
 import com.kodillalibrary.kodillalibrary.exception.CopiesOfBookNotFoundException;
 import com.kodillalibrary.kodillalibrary.mappers.CopyMapper;
-import com.kodillalibrary.kodillalibrary.service.DbServiceCopyBook;
+import com.kodillalibrary.kodillalibrary.service.CopyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +11,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/library")
-public class CopieOfBookController {
+public class CopyController {
 
     @Autowired
-    private DbServiceCopyBook serviceCopyBook;
+    private CopyService serviceCopyBook;
 
     @Autowired
     private CopyMapper copyMapper;

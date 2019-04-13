@@ -2,7 +2,7 @@ package com.kodillalibrary.kodillalibrary.mappers;
 
 import com.kodillalibrary.kodillalibrary.domain.reader.Reader;
 import com.kodillalibrary.kodillalibrary.domain.reader.ReaderDto;
-import com.kodillalibrary.kodillalibrary.service.DbServiceRentBooks;
+import com.kodillalibrary.kodillalibrary.service.RentalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.text.SimpleDateFormat;
@@ -16,7 +16,7 @@ public class ReaderMapper {
     private RentBooksMapper rentBooksMapper;
 
     @Autowired
-    private DbServiceRentBooks dbServiceRentBooks;
+    private RentalService rentalService;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public Reader mapToReader(final ReaderDto readerDto){
@@ -32,7 +32,7 @@ public class ReaderMapper {
                 reader.getName(),
                 reader.getSurname(),
                 dateFormat.format(reader.getDateOfAccountCreation()),
-                rentBooksMapper.rentBooksDtoList(dbServiceRentBooks.getRentBooks().stream()
+                rentBooksMapper.rentBooksDtoList(rentalService.getRentBooks().stream()
                         .filter(r -> r.getReader().getId() == reader.getId())
                         .collect(Collectors.toList()))
         );
@@ -45,7 +45,7 @@ public class ReaderMapper {
                         r.getName(),
                         r.getSurname(),
                         dateFormat.format(r.getDateOfAccountCreation()),
-                        rentBooksMapper.rentBooksDtoList(dbServiceRentBooks.getRentBooks().stream()
+                        rentBooksMapper.rentBooksDtoList(rentalService.getRentBooks().stream()
                         .filter(rentBooks -> rentBooks.getReader().getId() == r.getId())
                         .collect(Collectors.toList()))))
                 .collect(Collectors.toList());

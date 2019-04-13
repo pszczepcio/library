@@ -3,13 +3,13 @@ package com.kodillalibrary.kodillalibrary.repository;
 
 import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooks;
 import com.kodillalibrary.kodillalibrary.domain.reader.Reader;
-import com.kodillalibrary.kodillalibrary.domain.rentBooks.RentBooks;
+import com.kodillalibrary.kodillalibrary.domain.booksRental.RentalBooks;
 import com.kodillalibrary.kodillalibrary.domain.title.Title;
 import com.kodillalibrary.kodillalibrary.exception.CopiesOfBookNotFoundException;
-import com.kodillalibrary.kodillalibrary.CopiesOfBookDao;
-import com.kodillalibrary.kodillalibrary.ReaderDao;
-import com.kodillalibrary.kodillalibrary.RentBooksDao;
-import com.kodillalibrary.kodillalibrary.TitleDao;
+import com.kodillalibrary.kodillalibrary.repository.copy.dao.CopyDao;
+import com.kodillalibrary.kodillalibrary.repository.rentbook.dao.RentalDao;
+import com.kodillalibrary.kodillalibrary.repository.reader.dao.ReaderDao;
+import com.kodillalibrary.kodillalibrary.repository.title.dao.TitleDao;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,10 +30,10 @@ public class KodillaLibraryApplicationTests {
 	private TitleDao titleDao;
 
 	@Autowired
-	private CopiesOfBookDao copiesOfBookDao;
+	private CopyDao copyDao;
 
 	@Autowired
-	private RentBooksDao rentBooksDao;
+	private RentalDao rentalDao;
 
 	@Test
 	public void contextLoads() {
@@ -100,13 +100,13 @@ public class KodillaLibraryApplicationTests {
 
 		//When
 		int titleId = titleDao.findAll().size()-1;
-		copiesOfBookDao.save(copy1);
-		copiesOfBookDao.save(copy2);
-		copiesOfBookDao.save(copy3);
+		copyDao.save(copy1);
+		copyDao.save(copy2);
+		copyDao.save(copy3);
 
-		String copy1Status = copiesOfBookDao.findById(copy1.getId()).get().getStatus();
-		String copy2Status = copiesOfBookDao.findById(copy2.getId()).get().getStatus();
-		String copy3Status = copiesOfBookDao.findById(copy3.getId()).get().getStatus();
+		String copy1Status = copyDao.findById(copy1.getId()).get().getStatus();
+		String copy2Status = copyDao.findById(copy2.getId()).get().getStatus();
+		String copy3Status = copyDao.findById(copy3.getId()).get().getStatus();
 
 		//then
 		Assert.assertEquals("In Circulation",copy1Status);
@@ -114,9 +114,9 @@ public class KodillaLibraryApplicationTests {
 		Assert.assertEquals("Lost",copy3Status);
 
 		//CleanUp
-		copiesOfBookDao.delete(copy1.getId());
-		copiesOfBookDao.delete(copy2.getId());
-		copiesOfBookDao.delete(copy3.getId());
+		copyDao.delete(copy1.getId());
+		copyDao.delete(copy2.getId());
+		copyDao.delete(copy3.getId());
 		titleDao.delete(title1.getId());
 	}
 
@@ -160,15 +160,14 @@ public class KodillaLibraryApplicationTests {
 		title.getCopiesOfBooksList().add(copy6);
 		title.getCopiesOfBooksList().add(copy7);
 
-		System.out.println("asasasas" + title.getId());
 		//When
-		copiesOfBookDao.save(copy1);
-		copiesOfBookDao.save(copy2);
-		copiesOfBookDao.save(copy3);
-		copiesOfBookDao.save(copy4);
-		copiesOfBookDao.save(copy5);
-		copiesOfBookDao.save(copy6);
-		copiesOfBookDao.save(copy7);
+		copyDao.save(copy1);
+		copyDao.save(copy2);
+		copyDao.save(copy3);
+		copyDao.save(copy4);
+		copyDao.save(copy5);
+		copyDao.save(copy6);
+		copyDao.save(copy7);
 
 		long idCopyBook = copy2.getId();
 		System.out.println("idCopyBook: " + idCopyBook );
@@ -176,22 +175,22 @@ public class KodillaLibraryApplicationTests {
 		System.out.println("idReader: " + idReader);
 
 		//then
-		RentBooks rentBooks = new RentBooks(copy2,janKowalski);
-		rentBooks.setCopiesOfBooks(copiesOfBookDao.findById(idCopyBook).orElseThrow(CopiesOfBookNotFoundException::new));
-		rentBooks.setReader(readerDao.findOne(idReader));
-		copy1.getRentBooksList().add(rentBooks);
-		janKowalski.getRentBooksList().add(rentBooks);
-		rentBooksDao.save(rentBooks);
+		RentalBooks rentalBooks = new RentalBooks(copy2,janKowalski);
+		rentalBooks.setCopiesOfBooks(copyDao.findById(idCopyBook).orElseThrow(CopiesOfBookNotFoundException::new));
+		rentalBooks.setReader(readerDao.findOne(idReader));
+		copy1.getRentalBooksList().add(rentalBooks);
+		janKowalski.getRentalBooksList().add(rentalBooks);
+		rentalDao.save(rentalBooks);
 
 		//CleanUp
-		rentBooksDao.delete(rentBooks);
-		copiesOfBookDao.delete(copy1.getId());
-		copiesOfBookDao.delete(copy2.getId());
-		copiesOfBookDao.delete(copy3.getId());
-		copiesOfBookDao.delete(copy4.getId());
-		copiesOfBookDao.delete(copy5.getId());
-		copiesOfBookDao.delete(copy6.getId());
-		copiesOfBookDao.delete(copy7.getId());
+		rentalDao.delete(rentalBooks);
+		copyDao.delete(copy1.getId());
+		copyDao.delete(copy2.getId());
+		copyDao.delete(copy3.getId());
+		copyDao.delete(copy4.getId());
+		copyDao.delete(copy5.getId());
+		copyDao.delete(copy6.getId());
+		copyDao.delete(copy7.getId());
 		readerDao.deleteByNameAndSurname("Jan", "Kowalski");
 		readerDao.deleteByNameAndSurname("Dorota", "Kowalska");
 		titleDao.delete(title.getId());

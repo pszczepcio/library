@@ -1,4 +1,4 @@
-package com.kodillalibrary.kodillalibrary.domain.rentBooks;
+package com.kodillalibrary.kodillalibrary.domain.booksRental;
 
 import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooks;
 import com.kodillalibrary.kodillalibrary.domain.reader.Reader;
@@ -13,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "RENT_BOOKS")
-public class RentBooks {
+public class RentalBooks {
     private long id;
     private Date dateOfRent;
     private Date dateOfReturn;
@@ -21,7 +21,7 @@ public class RentBooks {
     private Reader reader;
     private final static int NEXTMONTH = 30;
 
-    public RentBooks(CopiesOfBooks copiesOfBooks, Reader reader){
+    public RentalBooks(CopiesOfBooks copiesOfBooks, Reader reader){
         this.copiesOfBooks = copiesOfBooks;
         this.reader = reader;
         this.dateOfRent = new Date();

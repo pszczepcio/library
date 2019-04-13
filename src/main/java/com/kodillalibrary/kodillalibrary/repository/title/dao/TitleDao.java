@@ -1,4 +1,4 @@
-package com.kodillalibrary.kodillalibrary;
+package com.kodillalibrary.kodillalibrary.repository.title.dao;
 
 import com.kodillalibrary.kodillalibrary.domain.title.Title;
 import org.springframework.data.repository.CrudRepository;

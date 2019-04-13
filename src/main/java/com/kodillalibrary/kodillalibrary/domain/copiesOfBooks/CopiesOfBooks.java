@@ -1,6 +1,6 @@
 package com.kodillalibrary.kodillalibrary.domain.copiesOfBooks;
 
-import com.kodillalibrary.kodillalibrary.domain.rentBooks.RentBooks;
+import com.kodillalibrary.kodillalibrary.domain.booksRental.RentalBooks;
 import com.kodillalibrary.kodillalibrary.domain.title.Title;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
@@ -15,7 +15,7 @@ public class CopiesOfBooks {
     private long id;
     private String status;
     private Title title;
-    private List<RentBooks> rentBooksList = new ArrayList<>();
+    private List<RentalBooks> rentalBooksList = new ArrayList<>();
 
     public CopiesOfBooks(String status) {
         this.status = status;
@@ -53,16 +53,16 @@ public class CopiesOfBooks {
     }
 
     @OneToMany(
-            targetEntity = RentBooks.class,
+            targetEntity = RentalBooks.class,
             mappedBy = "copiesOfBooks",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    public List<RentBooks> getRentBooksList() {
-        return rentBooksList;
+    public List<RentalBooks> getRentalBooksList() {
+        return rentalBooksList;
     }
 
-    public void setRentBooksList(List<RentBooks> rentBooksList) {
-        this.rentBooksList = rentBooksList;
+    public void setRentalBooksList(List<RentalBooks> rentalBooksList) {
+        this.rentalBooksList = rentalBooksList;
     }
 }

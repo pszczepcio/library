@@ -1,4 +1,4 @@
-package com.kodillalibrary.kodillalibrary.domain.rentBooks;
+package com.kodillalibrary.kodillalibrary.domain.booksRental;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,14 +9,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class RentBooksDto {
+public class RentalBooksDto {
     private long id;
     private long copiesOfBooksId;
     private long readerId;
     private String dateOfRent;
     private String dateOfReturn;
 
-    public RentBooksDto(long copiesOfBooksId, long readerId) {
+    public RentalBooksDto(long copiesOfBooksId, long readerId) {
         this.copiesOfBooksId = copiesOfBooksId;
         this.readerId = readerId;
     }

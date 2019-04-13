@@ -27,5 +27,6 @@ dependencies {
 	compile ('mysql:mysql-connector-java')
 	compile group: 'org.projectlombok', name: 'lombok', version: '1.18.6'
 	compile ('org.springframework.boot:spring-boot-starter-web')
+	testCompile (group: 'com.h2database', name: 'h2', version: '1.4.199')
 	testCompile ('org.springframework.boot:spring-boot-starter-test')
 }

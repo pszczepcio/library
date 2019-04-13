@@ -3,7 +3,7 @@ package com.kodillalibrary.kodillalibrary.controller;
 import com.kodillalibrary.kodillalibrary.domain.reader.ReaderDto;
 import com.kodillalibrary.kodillalibrary.exception.ReaderNotFoundException;
 import com.kodillalibrary.kodillalibrary.mappers.ReaderMapper;
-import com.kodillalibrary.kodillalibrary.service.DbServiceReader;
+import com.kodillalibrary.kodillalibrary.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +16,7 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 public class ReaderController {
 
     @Autowired
-    private DbServiceReader service;
+    private ReaderService service;
 
     @Autowired
     private ReaderMapper readerMapper;

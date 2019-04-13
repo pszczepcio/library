@@ -1,4 +1,4 @@
-package com.kodillalibrary.kodillalibrary;
+package com.kodillalibrary.kodillalibrary.repository.copy.dao;
 
 import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooks;
 import org.springframework.data.repository.CrudRepository;
@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Transactional
 @Repository
-public interface CopiesOfBookDao extends CrudRepository<CopiesOfBooks, Long> {
+public interface CopyDao extends CrudRepository<CopiesOfBooks, Long> {
     @Override
     List<CopiesOfBooks> findAll();
 

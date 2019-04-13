@@ -1,6 +1,6 @@
 package com.kodillalibrary.kodillalibrary.domain.reader;
 
-import com.kodillalibrary.kodillalibrary.domain.rentBooks.RentBooks;
+import com.kodillalibrary.kodillalibrary.domain.booksRental.RentalBooks;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,7 +17,7 @@ public class Reader {
     private String name;
     private String surname;
     private Date dateOfAccountCreation;
-    private List<RentBooks> rentBooksList = new ArrayList<>();
+    private List<RentalBooks> rentalBooksList = new ArrayList<>();
 
     public Reader(String name, String surname){
         this.name = name;
@@ -67,16 +67,16 @@ public class Reader {
     }
 
     @OneToMany(
-            targetEntity = RentBooks.class,
+            targetEntity = RentalBooks.class,
             mappedBy = "reader",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    public List<RentBooks> getRentBooksList() {
-        return rentBooksList;
+    public List<RentalBooks> getRentalBooksList() {
+        return rentalBooksList;
     }
 
-    public void setRentBooksList(List<RentBooks> rentBooksList) {
-        this.rentBooksList = rentBooksList;
+    public void setRentalBooksList(List<RentalBooks> rentalBooksList) {
+        this.rentalBooksList = rentalBooksList;
     }
 }

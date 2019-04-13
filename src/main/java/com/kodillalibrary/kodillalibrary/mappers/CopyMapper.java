@@ -2,7 +2,7 @@ package com.kodillalibrary.kodillalibrary.mappers;
 
 import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooks;
 import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooksDto;
-import com.kodillalibrary.kodillalibrary.service.DbServiceTitle;
+import com.kodillalibrary.kodillalibrary.service.TitleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.List;
@@ -11,12 +11,12 @@ import java.util.stream.Collectors;
 @Component
 public class CopyMapper {
     @Autowired
-    private DbServiceTitle dbServiceTitle;
+    private TitleService titleService;
 
     public  CopiesOfBooks mapToCopiesOfBook(final CopiesOfBooksDto copiesOfBooksDto){
         CopiesOfBooks copiesOfBooks = new CopiesOfBooks(copiesOfBooksDto.getStatus());
         copiesOfBooks.setId(copiesOfBooksDto.getId());
-        copiesOfBooks.setTitle(dbServiceTitle.getBookById(copiesOfBooksDto.getTitleId()));
+        copiesOfBooks.setTitle(titleService.getBookById(copiesOfBooksDto.getTitleId()));
         return copiesOfBooks;
     }
 
