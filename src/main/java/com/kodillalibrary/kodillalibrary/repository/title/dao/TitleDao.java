@@ -21,8 +21,5 @@ public interface TitleDao extends CrudRepository<Title, Long> {
     @Override
     void delete(Long id);
 
-    @Override
-    void deleteAll();
-
     void deleteByTitle(String title);
 }

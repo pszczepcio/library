@@ -18,6 +18,11 @@ public class ReaderDto {
     private String dateOfAccountCreation;
     private List<RentalBooksDto> rentalBooksDtoList;
 
+    public ReaderDto(String name, String surname){
+        this.name = name;
+        this.surname = surname;
+    }
+
     public ReaderDto(long id, String name, String surname, String date){
         this.id = id;
         this.name = name;

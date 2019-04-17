@@ -13,4 +13,9 @@ public class CopiesOfBooksDto {
     private long id;
     private String status;
     private long titleId;
+
+    public CopiesOfBooksDto(String status, long titleId) {
+        this.status = status;
+        this.titleId = titleId;
+    }
 }

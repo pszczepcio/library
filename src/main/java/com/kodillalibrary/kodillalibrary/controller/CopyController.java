@@ -25,7 +25,7 @@ public class CopyController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getCopies")
-    public List<CopiesOfBooksDto> copiesOfBooksDtoList(){
+    public List<CopiesOfBooksDto> getCopiesOfBooksDtoList(){
         return copyMapper.mapToCopiesOfBookDtoList(serviceCopyBook.getAllCopies());
     }
 

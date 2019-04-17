@@ -13,7 +13,7 @@ public class ReaderService {
     @Autowired
     private ReaderDao readerDao;
 
-    public Reader saveReaders(final Reader reader){
+    public Reader saveReader(final Reader reader){
         return readerDao.save(reader);
     }
 

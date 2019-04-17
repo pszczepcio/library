@@ -38,7 +38,7 @@ public class ReaderController {
 
     @RequestMapping(method = RequestMethod.POST, value = "createReader", consumes = APPLICATION_JSON_VALUE)
     public void createReader(@RequestBody ReaderDto readerDto){
-        service.saveReaders(readerMapper.mapToReader(readerDto));
+        service.saveReader(readerMapper.mapToReader(readerDto));
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteReaderByNameAndSurname")
@@ -51,8 +51,4 @@ public class ReaderController {
         service.deleteReaderById(readerId);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "updateReader")
-    public ReaderDto updateReader(@RequestBody ReaderDto readerDto){
-        return readerMapper.mapToReaderDto(service.saveReaders(readerMapper.mapToReader(readerDto)));
-    }
 }

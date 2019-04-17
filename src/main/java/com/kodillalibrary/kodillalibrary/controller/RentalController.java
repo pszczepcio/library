@@ -9,6 +9,7 @@ import com.kodillalibrary.kodillalibrary.service.RentalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -39,6 +40,11 @@ public class RentalController {
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteRentBookById")
     public void deleteRentBookById(@RequestParam long rentBookId){
         serviceRentBooks.deleteById(rentBookId);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "updateRentBook")
+    public RentalBooksDto updateRental(@RequestBody RentalBooksDto rentalBooksDto) throws ReaderNotFoundException, CopiesOfBookNotFoundException, ParseException {
+        return rentBooksMapper.mapToRentBookDto(serviceRentBooks.saveRent(rentBooksMapper.mapToRentBooksAllParam(rentalBooksDto)));
     }
 
 }

@@ -18,9 +18,6 @@ public interface RentalDao extends CrudRepository<RentalBooks, Long> {
     RentalBooks save (RentalBooks rentalBooks);
 
     @Override
-    void delete(RentalBooks entity);
-
-    @Override
     void delete(Long rentBookId);
 
     Optional<RentalBooks> findById(Long id);
