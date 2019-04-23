@@ -1,6 +1,8 @@
 package com.kodillalibrary.kodillalibrary.service;
 
 import com.kodillalibrary.kodillalibrary.domain.reader.Reader;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

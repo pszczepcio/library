@@ -1,6 +1,7 @@
 package com.kodillalibrary.kodillalibrary.service;
 
 import com.kodillalibrary.kodillalibrary.domain.title.Title;
+import lombok.RequiredArgsConstructor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@RequiredArgsConstructor
 public class TitleServiceTestSuite {
 
     @Autowired

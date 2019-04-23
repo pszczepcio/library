@@ -22,11 +22,4 @@ public class ReaderDto {
         this.name = name;
         this.surname = surname;
     }
-
-    public ReaderDto(long id, String name, String surname, String date){
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.dateOfAccountCreation = date;
-    }
 }

@@ -13,6 +13,7 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("/api/library")
+@CrossOrigin(origins = "*")
 public class ReaderController {
 
     @Autowired

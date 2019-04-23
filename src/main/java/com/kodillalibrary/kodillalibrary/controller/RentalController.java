@@ -1,6 +1,7 @@
 package com.kodillalibrary.kodillalibrary.controller;
 
 import com.kodillalibrary.kodillalibrary.domain.booksRental.RentalBooksDto;
+import com.kodillalibrary.kodillalibrary.domain.copiesOfBooks.CopiesOfBooksDto;
 import com.kodillalibrary.kodillalibrary.exception.CopiesOfBookNotFoundException;
 import com.kodillalibrary.kodillalibrary.exception.ReaderNotFoundException;
 import com.kodillalibrary.kodillalibrary.exception.RentBooksNotFoundException;
@@ -17,14 +18,29 @@ import java.util.List;
 public class RentalController {
 
     @Autowired
+    private CopyController copyController;
+
+    @Autowired
     private RentalService serviceRentBooks;
 
     @Autowired
     private RentBooksMapper rentBooksMapper;
 
     @RequestMapping(method = RequestMethod.POST, value = "createRentBook")
-    public void createRentBook(@RequestBody RentalBooksDto rentalBooksDto) throws ReaderNotFoundException, CopiesOfBookNotFoundException {
-        serviceRentBooks.saveRent(rentBooksMapper.mapToRentBooks(rentalBooksDto));
+    public String createRentBook(@RequestBody RentalBooksDto rentalBooksDto) throws ReaderNotFoundException, CopiesOfBookNotFoundException {
+        if(copyController.getCopyById(rentalBooksDto.getCopiesOfBooksId()).getStatus().equals("available")) {
+            copyController.updateCopy(new CopiesOfBooksDto(
+                    copyController.getCopyById(rentalBooksDto.getCopiesOfBooksId()).getId(),
+                    "not available",
+                    copyController.getCopyById(rentalBooksDto.getCopiesOfBooksId()).getTitleId()
+            ));
+            copyController.getCopyById(rentalBooksDto.getCopiesOfBooksId()).setStatus("not available");
+            serviceRentBooks.saveRent(rentBooksMapper.mapToRentBooks(rentalBooksDto));
+            return "Order status: completed";
+        }else {
+            System.out.println("This book isn't available.");
+            return "No copy available. You can not process the order.";
+        }
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getRentBooks")
@@ -38,7 +54,13 @@ public class RentalController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteRentBookById")
-    public void deleteRentBookById(@RequestParam long rentBookId){
+    public void deleteRentBookById(@RequestParam long rentBookId) throws RentBooksNotFoundException, CopiesOfBookNotFoundException {
+        copyController.updateCopy(new CopiesOfBooksDto(
+                copyController.getCopyById(getRentBookById(rentBookId).getCopiesOfBooksId()).getId(),
+                "available",
+                copyController.getCopyById(getRentBookById(rentBookId).getCopiesOfBooksId()).getTitleId()
+        ));
+        copyController.getCopyById(getRentBookById(rentBookId).getCopiesOfBooksId()).setStatus("available");
         serviceRentBooks.deleteById(rentBookId);
     }
 

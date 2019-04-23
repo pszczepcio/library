@@ -30,7 +30,6 @@ public class TitleController {
 
     @RequestMapping(method = RequestMethod.POST, value = "createBookTitle")
     public void createBookTitle(@RequestBody TitleDto titleDto){
-
         titleService.saveBook(titleMapper.mapToTitle(titleDto));
     }
 
